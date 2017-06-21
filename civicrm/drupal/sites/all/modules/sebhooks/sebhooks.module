@@ -1,0 +1,350 @@
+<?php
+	$file = "/home/stan/compucorp/CivicCRM.txt";
+//	file_put_contents($file, "\nTEST Date: " . date(DATE_RSS) . "\n", FILE_APPEND);
+
+	
+	
+function sebhooks_civicrm_tabs( &$tabs, $contactID ) 
+	{
+	$file = "/home/stan/compucorp/CivicCRM.txt";
+	file_put_contents($file, "\nTAB Date: " . date(DATE_RSS) . " Name: View Contact $contactID\n");
+//	file_put_contents($file, "result:  " . print_r($tabs, true) . "\n", FILE_APPEND);
+  
+// let's add a Renewal tab  and put it last
+
+	$url = CRM_Utils_System::url( 'civicrm/xrp',
+	                              "reset=1&snippet=1&force=1&cid=$contactID" );
+	$tabs[] = array( 'id'    => 'Renewal Page',
+	                 'url'   => $url,
+	                 'title' => 'Renewal Page',
+	                 'weight' => 400 );
+	}
+
+function sebhooks_civicrm_tabset($tabsetName, &$tabs, $context) 
+	{
+	$file = "/home/stan/compucorp/CivicCRM.txt";
+//	file_put_contents($file, "\nTABSET Date: " . date(DATE_RSS) . " Name: $tabsetName\n", FILE_APPEND);
+ 	//check if the tab set is Event manage
+ 	if ($tabsetName == 'civicrm/event/manage') 
+ 		{
+		if (!empty($context)) {
+		$eventID = $context['event_id'];
+		$url = CRM_Utils_System::url( 'civicrm/event/manage/volunteer',
+			 "reset=1&snippet=5&force=1&id=$eventID&action=update&component=event" );
+		//add a new Volunteer tab along with url
+		$tab['volunteer'] = array(
+			 'title' => ts('Volunteers'),
+			 'link' => $url,
+			 'valid' => 1,
+			 'active' => 1,
+			 'current' => false,
+		);
+		}
+		else {
+		$tab['volunteer'] = array(
+		'title' => ts('Volunteers'),
+			 'url' => 'civicrm/event/manage/volunteer',
+		);
+		}
+		//Insert this tab into position 4
+		$tabs = array_merge(
+		array_slice($tabs, 0, 4),
+		$tab,
+		array_slice($tabs, 4)
+		);
+  }
+
+  //check if the tabset is Contribution Page
+  if ($tabsetName == 'civicrm/admin/contribute') {
+		if (!empty($context['contribution_page_id'])) {
+		$contribID = $context['contribution_page_id'];
+		$url = CRM_Utils_System::url( 'civicrm/admin/contribute/newtab',
+			 "reset=1&snippet=5&force=1&id=$contribID&action=update&component=contribution" );
+		//add a new Volunteer tab along with url
+		$tab['newTab'] = array(
+			 'title' => ts('newTab'),
+			 'link' => $url,
+			 'valid' => 1,
+			 'active' => 1,
+			 'current' => false,
+		);
+		}
+		if (!empty($context['urlString']) && !empty($context['urlParams'])) {
+		$tab[] = array(
+			 'title' => ts('newTab'),
+			 'name' => ts('newTab'),
+			 'url' => $context['urlString'] . 'newtab',
+			 'qs' => $context['urlParams'],
+			 'uniqueName' => 'newtab',
+		);
+		}
+		//Insert this tab into position 4
+		$tabs = array_merge(
+		array_slice($tabs, 0, 4),
+		$tab,
+		array_slice($tabs, 4)
+		);
+  }
+
+  //check if the tabset is Contact Summary Page
+	if ($tabsetName == 'civicrm/contact/view') 
+  		{
+		// unset the contribition tab, i.e. remove it from the page
+//		file_put_contents($file, "In: " . print_r( $tabs, true ) . "\n", FILE_APPEND);
+//		unset( $tabs[1] );
+		$contactID = $context['contact_id'];
+		// let's add a new "contribution" tab with a different name and put it last
+		// this is just a demo, in the real world, you would create a url which would
+		// return an html snippet etc.
+		$Curl = CRM_Utils_System::url( 'civicrm/contact/view/contribution',
+												"reset=1&snippet=1&force=1&cid=$contactID" );
+		$Rurl = CRM_Utils_System::url( 'civicrm/xrp',
+												"reset=1&snippet=1&force=1&cid=$contactID" );
+		// $url should return in 4.4 and prior an HTML snippet e.g. '<div><p>....';
+		// in 4.5 and higher this needs to be encoded in json. E.g. json_encode(array('content' => <html form snippet as previously provided>));
+		// or CRM_Core_Page_AJAX::returnJsonResponse($content) where $content is the html code
+		// in the first cases you need to echo the return and then exit, if you use CRM_Core_Page method you do not need to worry about this.
+//		$tabs[] = array( 
+//			'id'		=> 'mySupercoolTab',
+//			'url'		=> $Curl,
+//			'title'	=> 'Contribution Tab Renamed',
+//			'weight'	=> 300,
+//			);
+//		$tabs[] = array( 
+//			'id'		=> 'sebRenewal',
+//			'url'		=> $Rurl,
+//			'title'	=> 'Renewal',
+//			'weight'	=> 310,
+//			);
+//		file_put_contents($file, "Out: " . print_r( $tabs, true ) . "\n", FILE_APPEND);
+  }
+}
+
+
+
+function sebhooks_civicrm_alterContent(  $content, $context, $tplName, $object )
+	{
+	$file = "/home/stan/compucorp/CivicCRM.txt";
+//	file_put_contents($file, "\nalterContent    " . date(DATE_RSS) . " \n", FILE_APPEND);
+//	file_put_contents($file, "CONTENT: $content\n", FILE_APPEND);
+//	file_put_contents($file, "CONTEXT: $context\n", FILE_APPEND);
+//	file_put_contents($file, "TPLNAME: $tplName\n", FILE_APPEND);
+//	file_put_contents($file, "OBJECT: " . print_r( $object, true ) . "\n\n", FILE_APPEND);
+	}
+
+function sebhooks_civicrm_buildForm($formName, $form)
+	{
+	$file = "/home/stan/compucorp/CivicCRM.txt";
+//	file_put_contents($file, "\nbuildForm:  FORM: $formName " . date(DATE_RSS) . " \n", FILE_APPEND);
+//	file_put_contents($file, print_r( $form, true ) . "\n");
+
+	switch ( $formName )
+		{
+		case "CRM_Activity_Form_ActivityLinks":
+//			file_put_contents($file, "name " . $form->getVar('_name') . "\n", FILE_APPEND);
+//			file_put_contents($file, print_r( $form, true ) . "\n", FILE_APPEND);
+
+				// Assumes templates are in a templates folder relative to this file
+				$templatePath = realpath(dirname(__FILE__)."/templates");
+//			file_put_contents($file, "templatePath: " . $templatePath . "\n", FILE_APPEND);
+				// Add the field element in the form
+			$form->add('text', 'testfield', ts('Test field'));
+				// dynamically insert a template block in the page
+//			CRM_Core_Region::instance('page-body')->add(array(
+//					 'template' => "{$templatePath}/testfield.tpl"
+//					));
+			
+//			file_put_contents($file, "Finis\n", FILE_APPEND);
+			break;
+		default:
+//			file_put_contents($file, "Unknown Form " . $formName . " Internal Name: " . $form->getVar('_name') . "\n", FILE_APPEND);
+			break;
+		}
+
+
+	}
+
+function sebhooks_civicrm_pre($op, $objectName, $id, $params)
+	{    
+	include 'CbConnect.txt';
+
+	$file = "/home/stan/compucorp/CivicCRM.txt";
+	file_put_contents($file, "\nPRE:  OBJECT: $objectName - Action: $op - Date: " . date(DATE_RSS) . " id: $id\n", FILE_APPEND);
+	switch ( $objectName )
+		{
+		case "Activity":
+//			file_put_contents($file, "$objectName: " . print_r($params, true) . "\n", FILE_APPEND);
+			break;
+		case "Address":
+//			file_put_contents($file, "Pre:  $objectName: " . print_r($params, true) . "\n", FILE_APPEND);
+			break;
+		case "Email":
+//			file_put_contents($file, "Pre:  $objectName: " . print_r($params, true) . "\n", FILE_APPEND);
+			break;
+		case "FinancialItem":
+//			file_put_contents($file, "Pre:  $objectName: " . print_r($params, true) . "\n", FILE_APPEND);
+			break;
+		case "Contribution":
+//			file_put_contents($file, "Pre:  $objectName: " . print_r($params, true) . "\n", FILE_APPEND);
+			break;
+		case "IM":
+//			file_put_contents($file, "Pre:  $objectName: " . print_r($params, true) . "\n", FILE_APPEND);
+			break;
+		case "Individual":
+//			file_put_contents($file, "Pre:  $objectName: " . print_r($params, true) . "\n", FILE_APPEND);
+			break;
+		case "LineItem":
+//			file_put_contents($file, "Pre:  $objectName: " . print_r($params, true) . "\n", FILE_APPEND);
+			break;
+		case "Membership":
+//			file_put_contents($file, "Pre:  $objectName: " . print_r($params, true) . "\n", FILE_APPEND);
+			SaveNewMemberShip( $id, $params);
+			break;
+		case "MembershipPayment":
+			file_put_contents($file, "Pre: ID: $id $objectName: " . print_r($params, true) . "\n", FILE_APPEND);
+			break;
+		case "Phone":
+//			file_put_contents($file, "Pre: ID: $id $objectName: " . print_r($params, true) . "\n", FILE_APPEND);
+			break;
+		default:
+			file_put_contents($file, "Pre: ID: $id Unknown -- $objectName: " . print_r($params, true) . "\n", FILE_APPEND);
+			break;
+		}
+			
+	}
+
+function sebhooks_civicrm_post($op, $objectName, $id, $params)
+	{    
+	include 'CbConnect.txt';
+
+	$file = "/home/stan/compucorp/CivicCRM.txt";
+	file_put_contents($file, "\nPOST: OBJECT: $objectName - Action: $op - Date: " . date(DATE_RSS) . " id: $id\n", FILE_APPEND);
+	switch ( $objectName )
+		{
+		case "Activity":
+//			file_put_contents($file, "Post:  $objectName: " . print_r($params, true) . "\n", FILE_APPEND);
+			break;
+		case "Address":
+//			file_put_contents($file, "Post:  $objectName: " . print_r($params, true) . "\n", FILE_APPEND);
+			break;
+		case "Email":
+//			file_put_contents($file, "Post:  $objectName: " . print_r($params, true) . "\n", FILE_APPEND);
+			break;
+		case "FinancialItem":
+//			file_put_contents($file, "Post:  $objectName: " . print_r($params, true) . "\n", FILE_APPEND);
+			break;
+		case "Contribution":
+//			file_put_contents($file, "Post:  $objectName: " . print_r($params, true) . "\n", FILE_APPEND);
+			break;
+		case "IM":
+//			file_put_contents($file, "Post:  $objectName: " . print_r($params, true) . "\n", FILE_APPEND);
+			break;
+		case "Individual":
+//			file_put_contents($file, "Post:  $objectName: " . print_r($params, true) . "\n", FILE_APPEND);
+			break;
+		case "LineItem":
+//			file_put_contents($file, "Post:  $objectName: " . print_r($params, true) . "\n", FILE_APPEND);
+			break;
+		case "Membership": 
+//			file_put_contents($file, "Post:  $objectName: " . print_r($params, true) . "\n", FILE_APPEND);
+			$gid = SaveNewMemberShip( $id, $params);
+			break;
+		case "MembershipPayment":
+			file_put_contents($file, "Post ID: $id $objectName: " . print_r($params, true) . "\n", FILE_APPEND);
+//			$gid = SaveMemberPayment( $id, $params);
+//			file_put_contents($file, "Post:  Saved payment\n", FILE_APPEND);
+			break;
+		case "Phone":
+//			file_put_contents($file, "Post:  $objectName: " . print_r($params, true) . "\n", FILE_APPEND);
+			break;
+		default:
+			file_put_contents($file, "Post:  Unknown -- $objectName: " . print_r($params, true) . "\n", FILE_APPEND);
+			break;
+		}
+		
+//	file_put_contents($file, "Post:  Return\n", FILE_APPEND);
+	
+	}
+
+function SaveRenewal( $id, $params)
+	{
+	include 'CbConnect.txt';
+	$file = "/home/stan/compucorp/CivicCRM.txt";
+	include_once 'CbConnect.txt';
+	file_put_contents($file, "SRparams: " . print_r($params,true) . "\n", FILE_APPEND);
+	$mysqli->close();
+	}
+
+function SaveNewMemberShip( $id, $params)
+	{
+	$file = "/home/stan/compucorp/CivicCRM.txt";
+//	file_put_contents($file, "ID: $id - SNMparams: " . print_r($params,true) . "\n", FILE_APPEND);
+	if ( $id > 0 )
+		{
+		
+		require_once 'CRM/Core/BAO/CustomField.php';
+		require_once 'CRM/Core/BAO/CustomValueTable.php';
+
+		$startdateID	= CRM_Core_BAO_CustomField::getCustomFieldID('StartDate',		"Renewals");
+		$enddateID  		= CRM_Core_BAO_CustomField::getCustomFieldID('EndDate',			"Renewals");
+		$membershipID	= CRM_Core_BAO_CustomField::getCustomFieldID('membership_id',	"Renewals");
+
+		$startDate = '';
+		$endDate = '';
+				
+		$flds = array('entityID' => $id
+			, 'custom_'	. $membershipID=> $id
+			);
+
+//file_put_contents($file, "SNM:295\n", FILE_APPEND);
+		if ( is_object( $params ) )
+			{
+			if ( !( $params->_DB_resultid >0  ))
+				{
+				file_put_contents($file, "params is object  \n", FILE_APPEND);
+				$flds ['custom_' . $startdateID]	= str_replace('-','',$params->start_date); 
+				$flds ['custom_' . $enddateID]	= str_replace('-','',$params->end_date); 
+//				file_put_contents($file, "\n309: SaveNewMemberShip:  " . print_r($flds, true) . "\n", FILE_APPEND);
+				CRM_Core_BAO_CustomValueTable::setValues($flds);
+				}
+			}
+		else
+			{
+			file_put_contents($file, "params is array  \n", FILE_APPEND);
+			$flds ['custom_' . $startdateID]	= str_replace('-','',$params['log_start_date']); 
+			$flds ['custom_' . $enddateID]	= str_replace('-','',$params['end_date']); 
+//			file_put_contents($file, "\n318: SaveNewMemberShip:  " . print_r($flds, true) . "\n", FILE_APPEND);
+			CRM_Core_BAO_CustomValueTable::setValues($flds);
+   		}
+//file_put_contents($file, "SNM:321\n", FILE_APPEND);
+   		
+   		
+		}
+	return ;
+	}
+
+function SaveMemberPayment( $id, $params)
+	{
+	require_once 'CRM/Core/BAO/CustomField.php';
+	$file = "/home/stan/compucorp/CivicCRM.txt";
+
+	$membershipID	= CRM_Core_BAO_CustomField::getCustomFieldID('membership_id', "Renewals");
+	$contributionID	= CRM_Core_BAO_CustomField::getCustomFieldID('contribution_id', "Renewals");
+	$contributionID	= CRM_Core_BAO_CustomField::getCustomFieldID('contribution_id', "Renewals");
+
+	$flds = array('entityID' => $id );
+//	$result = CRM_Core_BAO_CustomValueTable::getValues($flds);
+//	file_put_contents($file, "result:  " . print_r($result, true) . "\n", FILE_APPEND);
+
+	$flds = array('entityID' . $reselt[ 'id' ]
+		, 'custom_' . $contributionID => $params->contribution_id
+		);
+//	CRM_Core_BAO_CustomValueTable::setValues($flds);
+	file_put_contents($file, "Finished the setValues function\n", FILE_APPEND);
+
+
+	return $gid;
+	}
+
+
+?>

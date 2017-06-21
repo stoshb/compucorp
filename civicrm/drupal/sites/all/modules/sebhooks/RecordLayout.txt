@@ -1,0 +1,312 @@
+Activity: Array
+(
+    [source_contact_id] => 202
+    [source_record_id] => 102
+    [activity_type_id] => 6
+    [subject] => $ 5.00 - Senior Membership: Offline signup (by stoshb@icloud.com)
+    [activity_date_time] => 20170606112400
+    [is_test] => 
+    [status_id] => 2
+    [skipRecentView] => 1
+    [campaign_id] => 
+    [target_contact_id] => Array
+        (
+            [0] => 233
+        )
+
+    [priority_id] => 2
+)
+
+Contribution: Array
+(
+    [currency] => USD
+    [receipt_date] => null
+    [source] => General Membership: Offline signup (by stoshb@icloud.com)
+    [non_deductible_amount] => null
+    [payment_processor] => 
+    [contact_id] => 180
+    [fee_amount] => 0
+    [total_amount] => 100.00
+    [receive_date] => 20170606102500
+    [financial_type_id] => 2
+    [payment_instrument_id] => 4
+    [trxn_id] => 
+    [invoice_id] => 
+    [is_test] => 
+    [contribution_status_id] => 1
+    [check_number] => 
+    [campaign_id] => 
+    [is_pay_later] => 
+    [membership_id] => 33
+    [tax_amount] => 
+    [skipLineItem] => 1
+    [contribution_recur_id] => 
+    [pan_truncation] => 
+    [card_type_id] => 
+    [line_item] => Array
+        (
+            [2] => Array
+                (
+                    [7] => Array
+                        (
+                            [price_field_id] => 4
+                            [price_field_value_id] => 7
+                            [label] => General
+                            [field_title] => Membership Amount
+                            [description] => Regular annual membership.
+                            [qty] => 1
+                            [unit_price] => 100.00
+                            [line_total] => 100
+                            [participant_count] => 0
+                            [max_value] => 
+                            [membership_type_id] => 1
+                            [membership_num_terms] => 
+                            [auto_renew] => 0
+                            [html_type] => Radio
+                            [financial_type_id] => 2
+                            [tax_amount] => 
+                            [non_deductible_amount] => 0.00
+                        )
+
+                )
+
+        )
+
+    [net_amount] => 100
+)
+
+
+
+Individual: Array
+	(
+    [qfKey] => c8450992aac6323689cb86cbe58438a7_1877
+    [entryURL] => http://compucorp.kjitx.com/drupal/civicrm/contact/add?reset=1&amp;action=update&amp;cid=208
+    [prefix_id] => 
+    [first_name] => Al
+    [middle_name] => Brad
+    [last_name] => Carter
+    [suffix_id] => 
+    [nick_name] => AlC
+    [job_title] => 
+    [employer_id] => 
+    [contact_source] => 
+    [external_identifier] => 
+    [contact_sub_type] => Array
+        (
+        )
+
+    [hidden_custom] => 1
+    [hidden_custom_group_count] => Array
+        (
+            [] => 1
+        )
+
+    [custom_1_2] => 
+    [custom_2_2] => 
+    [custom_3_2] => 
+    [privacy] => Array
+        (
+            [do_not_phone] => 
+            [do_not_email] => 
+            [do_not_mail] => 
+            [do_not_sms] => 
+            [do_not_trade] => 
+        )
+
+    [preferred_language] => en_US
+    [preferred_mail_format] => Both
+    [communication_style_id] => 1
+    [addressee_id] => 1
+    [addressee_custom] => 
+    [email_greeting_id] => 1
+    [email_greeting_custom] => 
+    [postal_greeting_id] => 1
+    [postal_greeting_custom] => 
+    [gender_id] => 
+    [birth_date] => 
+    [deceased_date] => 
+    [group] => Array
+        (
+        )
+
+    [modified_date] => 2017-06-06 10:05:28
+    [email] => Array
+        (
+            [1] => Array
+                (
+                    [email] => a@b.c
+                    [location_type_id] => 1
+                    [on_hold] => 
+                    [is_bulkmail] => 
+                    [is_primary] => 1
+                    [signature_text] => 
+                    [signature_html] => 
+                )
+
+        )
+
+    [phone] => Array
+        (
+            [1] => Array
+                (
+                    [phone_type_id] => 1
+                    [phone] => 214-555-1010
+                    [phone_ext] => 
+                    [location_type_id] => 1
+                    [is_primary] => 1
+                )
+
+        )
+
+    [im] => Array
+        (
+            [1] => Array
+                (
+                    [provider_id] => 1
+                    [location_type_id] => 1
+                    [name] => 860-860-2975
+                    [is_primary] => 1
+                )
+
+        )
+
+    [website] => Array
+        (
+            [1] => Array
+                (
+                    [website_type_id] => 1
+                    [url] => 
+                )
+
+        )
+
+    [address] => Array
+        (
+            [1] => Array
+                (
+                    [location_type_id] => 1
+                    [is_primary] => 1
+                    [master_id] => 
+                    [street_address] => 
+                    [supplemental_address_1] => 
+                    [supplemental_address_2] => 
+                    [supplemental_address_3] => 
+                    [city] => Plano
+                    [postal_code] => 78722
+                    [country_id] => 1228
+                    [state_province_id] => 1042
+                    [county_id] => 
+                    [master_contact_id] => 
+                )
+
+        )
+
+    [MAX_FILE_SIZE] => 134217728
+    [contact_type] => Individual
+    [contact_id] => 208
+    [is_deceased] => 
+	)
+
+Membership: Array
+(
+    [total_amount] => 100.00
+    [contact_id] => 180
+    [status_id] => 1
+    [source] => 
+    [is_override] => 
+    [campaign_id] => 
+    [exclude_is_admin] => 1
+    [financial_type_id] => 2
+    [payment_instrument_id] => 4
+    [trxn_id] => 
+    [contribution_status_id] => 1
+    [check_number] => 
+    [receive_date] => 20170606102500
+    [card_type_id] => 
+    [pan_truncation] => 
+    [contribution_source] => General Membership: Offline signup (by stoshb@icloud.com)
+    [lineItems] => Array
+        (
+            [2] => Array
+                (
+                    [7] => Array
+                        (
+                            [price_field_id] => 4
+                            [price_field_value_id] => 7
+                            [label] => General
+                            [field_title] => Membership Amount
+                            [description] => Regular annual membership.
+                            [qty] => 1
+                            [unit_price] => 100.00
+                            [line_total] => 100
+                            [participant_count] => 0
+                            [max_value] => 
+                            [membership_type_id] => 1
+                            [membership_num_terms] => 
+                            [auto_renew] => 0
+                            [html_type] => Radio
+                            [financial_type_id] => 2
+                            [tax_amount] => 
+                            [non_deductible_amount] => 0.00
+                        )
+
+                )
+
+        )
+
+    [processPriceSet] => 1
+    [action] => 1
+    [membership_type_id] => 1
+    [join_date] => 20170606
+    [start_date] => 20170606
+    [end_date] => 20190605
+    [max_related] => 
+    [custom] => Array
+        (
+        )
+
+    [id] => 
+)
+
+MembershipPayment: Array
+(
+    [membership_id] => 33
+    [contribution_id] => 97
+)
+
+LineItem: Array
+(
+    [price_field_id] => 4
+    [price_field_value_id] => 7
+    [label] => General
+    [field_title] => Membership Amount
+    [description] => Regular annual membership.
+    [qty] => 1
+    [unit_price] => 100.00
+    [line_total] => 100
+    [participant_count] => 0
+    [max_value] => 
+    [membership_type_id] => 1
+    [membership_num_terms] => 
+    [auto_renew] => 0
+    [html_type] => Radio
+    [financial_type_id] => 2
+    [tax_amount] => 
+    [non_deductible_amount] => 0.00
+    [contribution_id] => 97
+    [entity_id] => 33
+    [entity_table] => civicrm_membership
+)
+
+FinancialItem: Array
+(
+    [transaction_date] => 20170606102500
+    [contact_id] => 180
+    [amount] => 100
+    [currency] => USD
+    [entity_table] => civicrm_line_item
+    [entity_id] => 99
+    [description] =>  General
+    [status_id] => 1
+    [financial_account_id] => 2
+)

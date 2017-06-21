@@ -1,0 +1,1 @@
+DROP TABLE `civicrm_value_renewals`;

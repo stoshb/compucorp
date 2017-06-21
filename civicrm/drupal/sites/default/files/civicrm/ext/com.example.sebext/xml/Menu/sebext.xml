@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<menu>
+  <item>
+    <path>civicrm/SebRenewalPage</path>
+    <page_callback>CRM_Sebext_Page_RenewalPage</page_callback>
+    <title>RenewalPage</title>
+    <access_arguments>access CiviCRM</access_arguments>
+  </item>
+  <item>
+    <path>civicrm/xrp</path>
+    <page_callback>CRM_Sebext_Page_RenewalPage</page_callback>
+    <title>RenewalPage</title>
+    <access_arguments>access CiviCRM</access_arguments>
+  </item>
+  <item>
+    <path>civicrm/path</path>
+    <page_callback>CRM_Sebext_Page_Junk</page_callback>
+    <title>Junk</title>
+    <access_arguments>access CiviCRM</access_arguments>
+  </item>
+</menu>
