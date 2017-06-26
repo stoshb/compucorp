@@ -1,0 +1,48 @@
+Create URL x.y.com
+Install Drupal 	x.y.com/druapl
+Install CiviCRM		x.y.com/drupal/
+
+*)	Admin - System Settings - Directories
+
+	civicrm.files = sites/default/files/civicrm/
+	
+	Custom Files 				[civicrm.files]/custom/
+	Custom Templates			[civicrm.files]/custom/
+	Extensions Directory		[civicrm.files]/ext
+	
+
+*)	Admin - Systerm Settings - Resource URL's
+
+	Extension Resource URL	[civicrm.files]/ext/
+
+
+*)	Set up modules
+
+	cd [civicrm.files]/ext 
+	
+	civix generate:module com.example.sebext
+	
+	Make sure to Enable extension when asked
+	
+	This will be displayed by:
+		
+		Admin - System Settings - Extensions
+		Enable  sebRenewals
+
+*)	Generate Web Page
+
+	cd [civicrm.files]/ext/com.example.sebext
+	
+	civix generate:page RenewalPage civicrm/Renewal-Page
+
+*)	Add the new entity
+
+	cd [civicrm.files]/ext/com.example.sebext
+	
+	civix generate:entity ZzzEntity
+	
+	
+*)	Hook files stored in sites/all/modules/sebhooks
+
+	include	sebhooks.info
+				sebhooks.module

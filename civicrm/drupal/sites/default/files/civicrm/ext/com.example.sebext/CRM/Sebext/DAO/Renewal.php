@@ -33,15 +33,15 @@
  * (GenCodeChecksum:1a9ebe9e0d3ab9247f2a3dda32bab22a)
  */
 	$file = "/home/stan/compucorp/CivicCRM.txt";
-	file_put_contents($file, "\nIn Renewal.php: " . date(DATE_RSS) . " \n", FILE_APPEND);
+//	file_put_contents($file, "\nIn Renewal.php: " . date(DATE_RSS) . " \n", FILE_APPEND);
 
 //q	//require_once '/home/stan/compucorp/drupal/sites/all/modules/civicrm/CRM/Core/DAO.php';
 //q	//require_once '/home/stan/compucorp/drupal/sites/all/modules/civicrm/CRM/Utils/Type.php';
 //q	//require_once "/home/stan/compucorp/drupal/sites/all/modules/civicrm/CRM/Core/DAO.php";
 //q	//require_once "/home/stan/compucorp/drupal/sites/all/modules/civicrm/CRM/Core/Page.php";
 //q	
-//x	require_once 'CRM/Core/DAO.php';
-//x	require_once 'CRM/Utils/Type.php';
+	require_once 'CRM/Core/DAO.php';
+	require_once 'CRM/Utils/Type.php';
 	
 	/**
 	 * CRM_Member_DAO_Renewal constructor.
@@ -142,11 +142,7 @@
 			if (!isset(Civi::$statics[__CLASS__]['links'])) {
 			Civi::$statics[__CLASS__]['links'] = static ::createReferenceColumns(__CLASS__);
 			Civi::$statics[__CLASS__]['links'][] = new CRM_Core_Reference_Basic(self::getTableName() , 'contact_id', 'civicrm_contact', 'id');
-			Civi::$statics[__CLASS__]['links'][] = new CRM_Core_Reference_Basic(self::getTableName() , 'membership_type_id', 'civicrm_value_renewals_4_type', 'id');
-			Civi::$statics[__CLASS__]['links'][] = new CRM_Core_Reference_Basic(self::getTableName() , 'status_id', 'civicrm_value_renewals_4_status', 'id');
 			Civi::$statics[__CLASS__]['links'][] = new CRM_Core_Reference_Basic(self::getTableName() , 'owner_membership_id', 'civicrm_value_renewals_4', 'id');
-			Civi::$statics[__CLASS__]['links'][] = new CRM_Core_Reference_Basic(self::getTableName() , 'contribution_recur_id', 'civicrm_contribution_recur', 'id');
-			Civi::$statics[__CLASS__]['links'][] = new CRM_Core_Reference_Basic(self::getTableName() , 'campaign_id', 'civicrm_campaign', 'id');
 			CRM_Core_DAO_AllCoreTables::invoke(__CLASS__, 'links_callback', Civi::$statics[__CLASS__]['links']);
 			}
 			return Civi::$statics[__CLASS__]['links'];
