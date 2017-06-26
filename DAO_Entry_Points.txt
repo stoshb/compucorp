@@ -1,0 +1,94 @@
+  $_checkedSqlFunctionsExist = FALSE;
+  $_dbColumnValueCache = NULL;
+  $_factory = NULL;
+  $_nullArray = array();
+  $_nullObject = NULL;
+  $_testEntitiesToSkip = array();
+  $_options = array();
+function acceptedSQLOperators() {
+function addSelectWhereClause() {
+function appendPseudoConstantsToFields(&$fields) {
+function assignTestFK($fieldName, $fieldDef, $params) {
+function assignTestValue($fieldName, &$fieldDef, $counter) {
+function buildOptionsContext($context = NULL) {
+function buildOptions($fieldName, $context = NULL, $props = array()) {
+function cascadeUpdate($daoName, $fromId, $toId, $newData = array()) {
+function checkConstraintExists($tableName, $constraint) {
+function checkFKConstraintInFormat($tableName, $columnName) {
+function checkFieldExists($tableName, $columnName, $i18nRewrite = TRUE) {
+function checkFieldHasAlwaysValue($tableName, $columnName, $columnValue) {
+function checkFieldIsAlwaysNull($tableName, $columnName) {
+function checkSqlFunctionsExist() {
+function checkTableExists($tableName) {
+function checkTriggerViewPermission($view = TRUE, $trigger = TRUE) {
+function checkVersion($version) {
+function commonRetrieveAll($daoName, $fieldIdName = 'id', $fieldId, &$details, $returnProperities = NULL) {
+function commonRetrieve($daoName, &$params, &$defaults, $returnProperities = NULL) {
+function composeQuery($query, $params, $abort = TRUE) {
+function __construct() {
+function &copyGeneric($daoName, $criteria, $newData = NULL, $fieldsFix = NULL, $blockCopyOfDependencies = NULL) {
+function copyValues(&$params) {
+function createReferenceColumns($className) {
+function createSQLFilter($fieldName, $filter, $type = NULL, $alias = NULL, $returnSanitisedArray = FALSE) {
+function createTempTableName($prefix = 'civicrm', $addRandomString = TRUE, $string = NULL) {
+function createTestObject(
+function createTriggers(&$info, $onlyTableName = NULL) {
+function debugPrint($message = NULL, $printDAO = TRUE) {
+function deleteEntityContact($daoName, $contactId) {
+function deleteTestObjects($daoName, $params = array()) {
+function delete($useWhere = FALSE) {
+function dropAllTables() {
+function dropTriggers($tableName = NULL) {
+function escapeStrings($strings, $default = NULL) {
+function escapeString($string) {
+function escapeWildCardString($string) {
+function &executeQuery(
+function executeUnbufferedQuery(
+function factory($table = '') {
+function fetchAll() {
+function fetchMap($keyColumn, $valueColumn) {
+function &fields() {
+function findById($id) {
+function findReferences() {
+function freeResult($ids = NULL) {
+function getAttribute($class, $fieldName = NULL) {
+function getConnection() {
+function &getContactIDsFromComponent(&$componentIDs, $tableName) {
+function getDatabaseName() {
+function getFieldSpec($fieldName) {
+function getFieldValue($daoName, $searchValue, $returnColumn = 'name', $searchColumn = 'id', $force = FALSE) {
+function getGlobalSetting($name, $default = NULL) {
+function getLocaleTableName($tableName) {
+function getOptionLabels() {
+function getReferenceColumns() {
+function getReferenceCounts() {
+function getReferencesToTable($tableName) {
+function getSelectWhereClause($tableAlias = NULL) {
+function getSortString($sort, $default = NULL) {
+function getTableName() {
+function getTableNames() {
+function init($dsn) {
+function initialize() {
+function isDBMyISAM($maxTablesToCheck = 10) {
+function keys() {
+function log($created = FALSE) {
+function makeAttribute($field) {
+function objectExists($value, $daoName, $daoID, $fieldName = 'name', $domainID = NULL) {
+function query($query, $i18nRewrite = TRUE) {
+function requireSafeDBName($database) {
+function reset() {
+function save($hook = TRUE) {
+function schemaRequiresRebuilding($tables = array("civicrm_contact")) {
+function sequenceKey() {
+function setApiFilter(&$params) {
+function setCreateDefaults(&$params, $defaults) {
+function _setDBOptions($options) {
+function setFactory(&$factory) {
+function setFieldValue($daoName, $searchValue, $setColumn, $setValue, $searchColumn = 'id') {
+function setOptions($options) {
+function shortenSQLName($string, $length = 60, $makeRandom = FALSE) {
+function &singleValueQuery(
+function storeValues(&$object, &$values) {
+function table() {
+function transaction($type) {
+function triggerRebuild($tableName = NULL, $force = FALSE) {

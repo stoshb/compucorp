@@ -1,0 +1,45 @@
+Post:  Membership: CRM_Member_BAO_Membership Object
+(
+    [id] => 121
+    [contact_id] => 33
+    [membership_type_id] => 2
+    [join_date] => 20060619
+    [start_date] => 20060619
+    [end_date] => 20070618
+    [source] => null
+    [status_id] => 4
+    [is_override] => null
+    [owner_membership_id] => 
+    [max_related] => null
+    [is_test] => 
+    [is_pay_later] => 
+    [contribution_recur_id] => 
+    [campaign_id] => 
+    [_options:protected] => Array
+        (
+        )
+
+    [_DB_DataObject_version] => 1.8.12
+    [__table] => civicrm_membership
+    [N] => 0
+    [_database_dsn] => 
+    [_database_dsn_md5] => e655154b2e7f504a29c9f24544f423f5
+    [_database] => civicrm
+    [_query] => Array
+        (
+            [condition] => 
+            [group_by] => 
+            [order_by] => 
+            [having] => 
+            [limit_start] => 
+            [limit_count] => 
+            [data_select] => *
+        )
+
+    [_DB_resultid] => 
+    [_resultFields] => 
+    [_link_loaded] => 
+    [_join] => 
+    [_lastError] => 
+)
+
